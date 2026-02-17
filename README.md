@@ -1,43 +1,92 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/2QC0Bpz-)
-# CSCI 1260 — Project
+## Adventure Game
 
-## Project Instructions
-All project requirements, grading criteria, and submission details are provided on **D2L**.  
-Refer to D2L as the *authoritative source* for this assignment.
+A simple text-based adventure game built with C# in VS Code using object-oriented programming principles
 
-This repository is intentionally minimal. You are responsible for:
-- Creating the solution and projects
-- Designing the class structure
-- Implementing the required functionality
+Project Structure
+
+This project follows a clean architecture:
+
+- `AdventureGame.Core`  
+  Contains all game logic, world state, characters, items, and battle system.
+
+- `AdventureGame.Console`  
+  Handles user input and renders the maze to the screen.
+
+All game rules live in the Core project as required.
 
 ---
 
-## Getting Started (CLI)
+## Controls
 
-You may use **Visual Studio**, **VS Code**, or the **terminal**.
+Use the following keys to move:
 
-### Create a solution
-```bash
-dotnet new sln -n ProjectName
-```
+- `W` → Move Up  
+- `S` → Move Down  
+- `A` → Move Left  
+- `D` → Move Right  
 
-### Create a project (example: console app)
-```bash
-dotnet new console -n ProjectName.App
-```
+---
 
-### Add the project to the solution
-```bash
-dotnet sln add ProjectName.App
-```
+## 🗺️ Maze Symbols
 
-### Build and run
-```bash
-dotnet build
-dotnet run --project ProjectName.App
-```
+- `#` = Wall  
+- `.` = Empty space  
+- `@` = Player  
+- `M` = Monster  
+- `W` = Weapon  
+- `P` = Potion  
+- `E` = Exit  
 
-## Notes
-- Commit early and commit often.
-- Your repository history is part of your submission.
-- Update this README with build/run instructions specific to your project.
+---
+
+## ⚔️ Battle Rules
+
+- Player starts with 100 HP (max 150).
+- Base damage is 10.
+- Weapons increase attack damage.
+- Potions restore 20 HP immediately.
+- Player attacks first in battle.
+- Monster attacks if still alive.
+- Battle continues until one reaches 0 HP.
+- No fleeing from battle.
+
+---
+
+## Win and Lose Conditions
+
+- Reach the `E` tile to win.
+- If player HP reaches 0, the game ends.
+
+---
+
+## OOP Design
+
+The game demonstrates:
+
+- **Interface:** `ICharacter`
+- **Inheritance:** `Weapon` and `Potion` inherit from `Item`
+- **Polymorphism:** `Player` and `Monster` both implement `ICharacter`
+- **Encapsulation:** Health and inventory are controlled through methods
+- **Separation of Concerns:** Core logic is separate from Console UI
+
+---
+
+## UML Diagram
+
+The UML diagram includes:
+
+- ICharacter (interface)
+- Player
+- Monster
+- Item (abstract)
+- Weapon
+- Potion
+- Maze
+
+The diagram shows inheritance, composition, and aggregation relationships.
+
+---
+
+## How to Build and Run
+Open the solution file, build, and run AdventureGame.Console
+
